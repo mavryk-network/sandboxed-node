@@ -1,3 +1,3 @@
-# Tezos sandboxed node
+# Mavryk sandboxed node
 
-Based on static binaries provided by [Serokell](https://github.com/serokell/tezos-packaging)
+Based on static binaries provided by [Mavryk Dynamics](https://github.com/mavryk-network/mavryk-packaging)

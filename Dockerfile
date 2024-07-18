@@ -1,5 +1,5 @@
 FROM alpine:3.19
-WORKDIR /tezos
+WORKDIR /mavryk
 RUN wget "https://raw.githubusercontent.com/zcash/zcash/v5.6.0/zcutil/fetch-params.sh" \
   && export OSTYPE=linux \
   && sed '/SAPLING_SPROUT_GROTH16_NAME/d; /progress/d; /retry-connrefused/d' fetch-params.sh | sh \
@@ -11,17 +11,17 @@ RUN wget "https://raw.githubusercontent.com/zcash/zcash/v5.6.0/zcutil/fetch-para
 
 ARG TARGETPLATFORM
 ARG TAG
-RUN if [ "$TARGETPLATFORM" = "linux/arm64" ]; then EXEC_NAME="octez-node-arm64"; else EXEC_NAME="octez-node"; fi \
-  && wget "https://github.com/serokell/tezos-packaging/releases/download/$TAG/$EXEC_NAME" -O "octez-node" \
-  && chmod +x octez-node \
-  && ln -s octez-node tezos-node
-#RUN ./tezos-node identity generate "0.0" --data-dir /tezos/sandbox
-COPY ./sandbox.json /tezos/
-COPY ./identity.json /tezos/sandbox/
-ENTRYPOINT ["/tezos/octez-node", "run", \
+RUN if [ "$TARGETPLATFORM" = "linux/arm64" ]; then EXEC_NAME="mavkit-node-arm64"; else EXEC_NAME="mavkit-node"; fi \
+  && wget "https://github.com/mavryk-network/mavryk-packaging/releases/download/$TAG/$EXEC_NAME" -O "mavkit-node" \
+  && chmod +x mavkit-node \
+  && ln -s mavkit-node mavryk-node
+#RUN ./mavryk-node identity generate "0.0" --data-dir /mavryk/sandbox
+COPY ./sandbox.json /mavryk/
+COPY ./identity.json /mavryk/sandbox/
+ENTRYPOINT ["/mavryk/mavkit-node", "run", \
     "-vv", \
-    "--data-dir=/tezos/sandbox", \
+    "--data-dir=/mavryk/sandbox", \
     "--synchronisation-threshold=0", \
-    "--sandbox=/tezos/sandbox.json", \
+    "--sandbox=/mavryk/sandbox.json", \
     "--allow-all-rpc=0.0.0.0", \
     "--rpc-addr=0.0.0.0:8732"]

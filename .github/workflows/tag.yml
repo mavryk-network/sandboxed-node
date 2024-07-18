@@ -1,4 +1,4 @@
-name: Tag the current Octez release
+name: Tag the current Mavkit release
 
 
 on:
@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build:
-    name: Force push tag of the current Octez release
+    name: Force push tag of the current Mavkit release
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo

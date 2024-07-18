@@ -1,4 +1,4 @@
-{ "data-dir": "/tezos/sandbox",
+{ "data-dir": "/mavryk/sandbox",
     "rpc": { "listen-addrs": [ "0.0.0.0:8732" ] },
     "p2p":
       { "expected-proof-of-work": 0, "bootstrap-peers": [],
@@ -14,7 +14,7 @@
             "block": "BLockGenesisGenesisGenesisGenesisGenesis53fc8eucdT3",
             "protocol": "Ps9mPmXaRzmzk35gbAYNCAw6UXdE2qoABTHbN2oEEc1qM7CwT9P"
           },
-          "chain_name": "TEZOS_SANDBOX_1970-01-01T00:00:00Z",
-          "sandboxed_chain_name": "SANDBOXED_TEZOS",
+          "chain_name": "MAVRYK_SANDBOX_1970-01-01T00:00:00Z",
+          "sandboxed_chain_name": "SANDBOXED_MAVRYK",
           "default_bootstrap_peers": [ ]
     } }

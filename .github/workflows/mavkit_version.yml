@@ -1,0 +1,33 @@
+name: Check Mavkit version
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  mavkit_version:
+    name: Check the latest Mavkit release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Install python-requests
+        run: sudo apt-get install python3-requests
+
+      - name: Check the latest Mavkit release
+        run: python3 mavkit_version.py
+
+      - name: Create a PR for new version
+        if: failure()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          export MAVKIT_VERSION=$(cat mavkit_version)
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git branch -D mavkit-$MAVKIT_VERSION || true
+          git checkout -b mavkit-$MAVKIT_VERSION
+          git add .
+          git commit -m "Update Mavkit binaries to $MAVKIT_VERSION"
+          git push --force origin mavkit-$MAVKIT_VERSION
+          gh pr create --title "Update Mavkit binaries to $MAVKIT_VERSION" --body "This PR updates the Mavkit binaries to the latest version $MAVKIT_VERSION"  --base master --head mavkit-$MAVKIT_VERSION
