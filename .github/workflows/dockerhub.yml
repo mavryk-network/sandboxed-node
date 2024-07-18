@@ -38,5 +38,5 @@ jobs:
           file: Dockerfile
           push: true
           build-args: TAG=${{ env.RELEASE_VERSION }}
-          tags: bakingbad/sandboxed-node:${{ env.RELEASE_VERSION }}
+          tags: mavrykdynamics/sandboxed-node:${{ env.RELEASE_VERSION }}
           platforms: linux/amd64,linux/arm64
