@@ -8,7 +8,7 @@ def run(*args, **kwargs):
     subprocess.run(args, check=True, **kwargs)
     
 
-MAVKIT_REPO_URL = 'https://github.com/serokell/mavryk-network/releases/latest'
+MAVKIT_REPO_URL = 'https://github.com/mavryk-network/mavryk-packaging/releases/latest'
 
 
 def main():
