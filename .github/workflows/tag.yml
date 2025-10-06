@@ -28,6 +28,6 @@ jobs:
       - name: make release
         run: make release
 
-      - uses: rhosys/github-action-rebuild-pull-requests@v1.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      # - uses: rhosys/github-action-rebuild-pull-requests@v1.0
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
