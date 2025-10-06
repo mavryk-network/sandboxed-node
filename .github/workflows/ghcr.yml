@@ -3,7 +3,7 @@ name: Publish on GHCR
 on:
   push:
     tags:
-      - 'v*'
+      - 'v*.*'
 
 jobs:
   build:
